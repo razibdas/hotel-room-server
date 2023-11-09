@@ -53,12 +53,29 @@ async function run() {
       res.send(result)
     })
 
+    app.get('/bookingsAll', async (req, res) => {
+      console.log(req.query.email);
+      let query = {};
+      if (req.query?.email) {
+        query = { email: req.query.email}
+      }
+      const result = await bookingCollectionRooms.find(query).toArray();
+      res.send(result)
+    })
+
     app.post('/bookingsAll', async(req, res) => {
       const booking = req.body;
       console.log(booking);
       const result = await bookingCollectionRooms.insertOne(booking);
       res.send(result)
 
+    })
+
+    app.delete('/bookingsAll/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) }
+      const result = await bookingCollectionRooms.deleteOne(query)
+      res.send(result)
     })
 
     
