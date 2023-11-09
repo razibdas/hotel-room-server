@@ -71,6 +71,11 @@ async function run() {
 
     })
 
+    app.patch('/bookingsAll/:id', async (req, res) => {
+      const updationgBooking = req.body;
+      console.log(updationgBooking);
+    })
+
     app.delete('/bookingsAll/:id', async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) }
