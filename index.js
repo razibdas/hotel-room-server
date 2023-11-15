@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // middleware
-app.use(cors());
+app.use (cors({origin:["http://localhost:5173","https://123hospitable-debt.surge.sh"]}))
 app.use(express.json());
 
 
